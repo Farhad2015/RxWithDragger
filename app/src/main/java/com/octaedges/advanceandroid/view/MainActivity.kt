@@ -1,7 +1,8 @@
-package com.octaedges.advanceandroid
+package com.octaedges.advanceandroid.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.octaedges.advanceandroid.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
