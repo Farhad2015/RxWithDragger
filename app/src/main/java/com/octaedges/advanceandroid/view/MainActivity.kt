@@ -25,11 +25,18 @@ class MainActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(context)
             adapter = countriesAdapter
         }
+
+        swipeRefreshLayout.setOnRefreshListener {
+            swipeRefreshLayout.isRefreshing = false
+            viewModel.refresh() 
+        }
+
         observeViewModel()
     }
 
     fun observeViewModel(){
         viewModel.countries.observe(this, Observer { countries ->
+            countriesList.visibility = View.VISIBLE
             countries?.let { countriesAdapter.updateCountries(it) }
         })
 
