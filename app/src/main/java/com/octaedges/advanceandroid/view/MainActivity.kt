@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         swipeRefreshLayout.setOnRefreshListener {
             swipeRefreshLayout.isRefreshing = false
-            viewModel.refresh() 
+            viewModel.refresh()
         }
 
         observeViewModel()

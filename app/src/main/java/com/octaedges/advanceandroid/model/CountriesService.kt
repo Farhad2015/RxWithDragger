@@ -1,22 +1,16 @@
 package com.octaedges.advanceandroid.model
 
+import com.octaedges.advanceandroid.DI.DaggerApiComponet
 import io.reactivex.rxjava3.core.Single
-import retrofit2.Retrofit
-import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 
 class CountriesService {
-    private val BASE_URL = "https://raw.githubusercontent.com/"
-    private val api: CountriesApi
+
+    @Inject
+    lateinit var api: CountriesApi
 
     init {
-        api = Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
-                .build()
-                .create(CountriesApi::class.java)
-
+        DaggerApiComponet.create().inject(this)
     }
 
     fun getCountries(): Single<List<Country>> {
